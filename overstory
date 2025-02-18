@@ -1,0 +1,74 @@
+Homework for Overstory Head of Software
+February 17, 2025
+Michael Hsu
+
+
+
+Leadership Experience
+Of my decade-long career in software engineering, I've spent the past three and a half years in engineering management, with one year as line manager and two and a half as Director of Engineering at Voltus.
+
+Over that time, I've led teams ranging from 4 to 25 direct reports, with close to 40 when accounting for dotted line relationships. The people under my leadership and care included engineering ICs at all levels from interns to staff engineers, four engineering managers, three product managers, a group product manager, and two designers. Being an early employee at Voltus, I played a key role in the hiring process for the vast majority of the team, paying special attention to interpersonal dynamics, team culture, and mission alignment.
+
+Voltus is a fully remote company, operating mainly across North America though with a handful of teammates in Europe and Australia. I took care to foster a remote-first culture rooted in clear communication, written artifacts, and the mindful use of synchronous meetings for more complex coordination and team building needs. I believe the constraint of remote work is also one of its great benefits: it requires that we clearly articulate standards, expectations, goals, incentives, metrics, proposals, and contracts. Twice a year, I helped plan and coordinate events during in-person offsites.
+
+My team was relatively diverse by tech industry standards, and as compared to the rest of Voltus engineering: 45% male, 20% nonbinary, 35% female, and 25% people of color (though primarily of Asian descent, whose representation in tech is probably a more nuanced discussion than we have space for here). It's worth noting these ratios held across seniority levels and IC vs management roles. I co-developed rubrics and hiring processes with the engineering and product teams to ensure fairness to our best ability when evaluating candidates, and successfully advocated for implicit bias training with our People team. 
+
+That said, for me, these statistics are neither the end goal nor the whole picture. Like most metrics, they are a shorthand for our priorities. Mine are twofold: one, I believe diverse perspectives empower us to develop better solutions to complex, multivalent problems such as climate change and sustainability; and two, I simply want to work in an environment that is personally meaningful, collectively fair, and gives everyone involved a chance to flourish. The positive impact we wish to achieve in the world begins with the building of psychologically safe and supportive communities wherever we happen to find ourselves—even within a corporation.
+
+
+Stakeholder Management
+The nature of my work in the energy industry required close coordination with many stakeholders, both internal and external. Internally, I regularly facilitated cross-functional projects across Operations, Product, Energy Markets, Regulatory Affairs, and Sales. Externally, I led technical discussions and contract negotiations with utilities, energy markets, and third-party technology partners to define and deliver results.
+
+In stakeholder management, I focus on building consensus around shared incentives, outcomes, and metrics, while making sure that the overarching objectives and strategies are not only well understood by, but firmly connected to, each team and individual's motivations and abilities. Working together with tech leads and engineering managers, I translate these narrative requirements into actionable engineering roadmaps, with well-defined milestones and acceptance criteria. I check in on progress regularly across teams, give guidance where needed, probe for weaknesses and faulty assumptions, but generally trust in the expertise of my team. I believe that this approach fosters a high degree of autonomy and problem ownership for engineers and stakeholders, while reducing wasteful micromanagement and misalignment.
+
+Most often, I think of this kind of work as storytelling, or the putting on of a play. It's about getting people to share in a compelling vision, and helping them find their place within its realization. It is the work of weaving perspectives and needs and desires into a coherent story, defining clear roles, equipping people to play those roles effectively, and articulating the major plot points that they have to hit along the way to our aspirations. 
+
+
+Startup/Scaleup Experience
+I am not generally ideological. I believe in adapting technical strategy to the business, the team, and the constraints of the problem domain. The main factors I consider are velocity, efficiency, reliability, correctness, history, sustainability/adaptability, and team health.
+
+As Voltus scaled from an early-stage startup to a ~300 person company, we employed a hybrid monorepo/microservices approach, trunk-based development, CI/CD with mandatory tests and reviews, and extensive use of feature flags to control rollout and reduce risk. On account of the one-shot reliability characteristics of the energy markets problem domain, we prioritized deployment stability, rapid iteration, and accountability through alerts, on-call rotations (PagerDuty), performance monitoring (Datadog), and tight user feedback loops.
+
+Our monorepo approach supported a large portion of our core systems, reducing friction in cross-team collaboration and ensuring a degree of consistency, which is the foundation for performance reliability. We paired this with microservices for domain-specific concerns requiring isolation and adaptability, such as external partner-facing APIs. Versioning was treated as an input parameter to our services, with older endpoints pruned out as our support window shifted. Cookie-cutter templates provided standardized basic functionality for new services, while commitment to trunk-based development ensured small, incremental changes were merged frequently to keep main stable. Deployments were automated and built from an (almost 🤞) always green main branch. 
+
+Breaking changes in the monorepo triggered alerts to the responsible engineers, emphasizing accountability and quick resolution. Microservice alerting was generally left to the discretion of respective engineering managers and tech leads. We combined alerting with other observability investments, including distributed tracing, dependency mapping, logging, and real-time metrics to quickly detect issues in production. Testing was heavily focused on the boundary sweet spot where stable endpoints and data models transition to data synthesis, operational adaptation, and user experience. Given the usual tradeoffs between velocity, reliability, and resourcing, the goal was to optimize for economical testing of the supposed invariants of the system while supporting the greatest range of edge behaviors. Of course, figuring out exactly where this boundary lies was a continual effort.
+
+Overall, I view technical strategy as dynamically co-evolving with business context, requiring ongoing evaluation and calibration to maintain alignment while driving sustainable growth.
+
+
+Technical Expertise
+I am:
+Fluent in Python (Flask), with extensive experience developing production-grade backend systems, REST APIs, and internal tools. 
+Proficient in data pipelines, including ingestion, transformation, and streaming processes for real-time device telemetry, market data, and utility data. 
+Familiar with React for frontend development, capable of reviewing PRs and contributing as needed (at probably a performant junior engineer level). 
+Also proficient in Java, C++, and a bit of Go.
+Familiar with Kafka (event streaming), Postgres (relational databases), Redis (caching and queuing), Temporal (orchestration), and the Hashicorp stack (Nomad, Consul, Vault, Terraform) for infrastructure and service orchestration. 
+Less experienced in advanced data science work, though have played with various tools and libraries and have worked closely with data scientists to develop analysis pipelines.
+Comfortable with performance optimization, observability (Datadog), and ensuring system reliability under high-throughput conditions.
+
+
+Products
+Data Science-Integrated Software Systems
+At Voltus, I integrated data-intensive workflows from the Energy Markets department into our core technology platform, enabling faster and more reliable decision-making for our Operations teams. I oversaw the prioritization and transition of critical energy market models and processes from Jupyter notebooks, custom scripts, and Excel spreadsheets into production services, with a strong focus on reliability, latency, and correctness. This work mainly involved defining data contracts, standardizing inputs and outputs, and introducing version control and testing to ensure robustness. I facilitated cross-functional collaboration between engineering, data analysts, and energy market experts to ensure these systems were accurate and met production expectations.
+
+That said, my hands-on experience with machine learning is limited to an undergrad class, hobbyist experimentation, and, in more recent years, the reading of papers and textbooks. I can't claim to be any kind of expert here, and it's an area I'd invest in shoring up as I onboarded into my role.
+
+Geospatial Data
+I love geospatial data. It's one reason I'm here, writing to you, in the first place. The mission to translate Earth observation data into practical, actionable insights for managing vegetation vis a vis energy infrastructure is deeply interesting to me, and aligns with my personal belief that awareness is essential to change. My first job out of school was two projects for my school's geography research lab mapping coastal wetlands and Amazonian river communities. While I have not worked with more sophisticated geospatial data pipelines in a professional context, I am generally conversant in GIS concepts, processes, and technologies such as QGIS and Mapbox, having used them in recent years for personal projects. I can have a nice dinner party conversation about LiDAR, radar, satellite optical imaging, stereoscopic imaging, reflectivity and thermal analysis, map projections, and ecology. 
+
+Infrastructure and Security
+While I did not oversee this domain of engineering work directly, I collaborated closely with the Infrastructure Team at Voltus to establish secure microservice patterns, implement data governance policies, and ensure compliance with data privacy and security best practices. This included defining standards for inter-service API security, encrypted data storage, and access controls for sensitive customer and operational data.
+
+
+Third Parties
+I regularly evaluated and managed third-party technology and data providers such as Arcadia and UtilityAPI for utility data authorization and access, Shortcut for project management, Clickhouse for analytic processing, and Temporal for workflow orchestration. These generally involved assessing and negotiating a wide variety of internal needs, vendor capabilities, cost, security, SLAs, contracts, and service reliability. I have some, but not extensive, experience with open source projects, such as Stepfunc's DNP3 libraries for energy grid communication.
+
+
+Why Should Overstory Hire Michael Hsu?
+Beyond my technical abilities, I am well-suited to this job because of my deep care for the life and people of this planet, and my talent for imbuing systems and organizations with that care. 
+
+I subscribe to the adage that strategy is the allocation of scarce resources. We have nothing more precious than our time on Earth. People trust me because they know, without a doubt, that I want their lives to be meaningful, sustainable, and compassionate. And that is how I approach engineering leadership: I strive to make software make sense, I strive to make it worth doing, and I strive to make the doing worthwhile—together.
+
+Trust is the foundation of collective achievement. I have the integrity, empathy, and courage to earn that trust, because my ultimate goal is to make sure everyone's time, money, and care are well-used. There are many people smarter and more experienced than I am. The difference is my ability to bring people together, to nurture teams and systems that are more than the sum of their parts. I believe technology reflects the culture of its genesis, and I am adept at working across the spectrum, from code to people to money, in the development of software that improves our world.
+
+All of this requires a company whose work I believe in, and Overstory sits at the intersection of what matters most to me—stewarding ecosystems and building technologies that align human and planetary wellbeing. So here I am, ready to roll up my sleeves.

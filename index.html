@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Radial Dendrogram Word Tree</title>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div style="padding: 10px;">
+    <label for="fileSelector">Tree data:</label>
+    <select id="fileSelector"></select>
+    <div id="wordDisplay" style="margin-left: 20px; font-size: 16px; height: 1em;"></div>
+  </div>
+  <div class="svg-container">
+    <svg width="750" height="750"></svg>
+  </div>
+  <script>
+    function loadTreeData(fileName) {
+      d3.json(fileName).then(treeData => {
+        const width = 750;
+        const height = 750;
+        const radius = Math.min(width, height) / 2;
+
+        const cluster = d3.cluster()
+          .size([360, radius]);
+
+        const root = d3.hierarchy(treeData);
+        cluster(root);
+
+        const svg = d3.select("svg")
+          .attr("viewBox", [-width / 2, -height / 2, width, height]);
+
+        svg.selectAll("*").remove();
+
+        const link = svg.append("g")
+          .selectAll("path")
+          .data(root.links())
+          .enter().append("path")
+          .attr("class", "link")
+          .attr("d", d3.linkRadial()
+            .angle(d => d.x * Math.PI / 180)
+            .radius(d => d.depth * (radius / root.height)))
+          .attr("stroke", "#aaa")
+          .attr("stroke-width", 1);
+
+        const node = svg.append("g")
+          .selectAll("g")
+          .data(root.descendants())
+          .enter().append("g")
+          .attr("transform", d => `
+            rotate(${d.x - 90})
+            translate(${d.depth * (radius / root.height)},0)
+          `);
+
+        node.filter(d => !d.children || d.children.length === 0)
+          .append("circle")
+          .attr("r", 1)
+          .attr("fill", "#27d");
+
+        node.filter(d => !d.children || d.children.length === 0)
+          .append("circle")
+          .attr("r", 4) // larger invisible radius for mouse detection
+          .attr("fill", "none")
+          .attr("pointer-events", "all")
+          .on("mouseover", function(event, d) {
+                const datapath = [];
+                let current = d;
+                while (current.parent) {
+                    datapath.unshift(current);
+                    current = current.parent;
+                }
+                d3.select("#wordDisplay").text(datapath.map(n => n.data.name).join(''));
+
+                svg.selectAll("path")
+                    .attr("stroke", linkData => datapath.includes(linkData.target) ? "#a33" : "#aaa")
+                    .attr("stroke-width", linkData => datapath.includes(linkData.target) ? 2 : 1);
+
+                svg.selectAll("path")
+                    .filter(linkData => datapath.includes(linkData.target))
+                    .raise();
+            })
+          .on("mouseout", function() {
+            d3.select("#wordDisplay").text('');
+
+            svg.selectAll("path")
+              .attr("stroke", "#aaa")
+              .attr("stroke-width", 1);
+          });
+      }).catch(error => {
+        console.error('Error loading or parsing ' + fileName + ':', error);
+      });
+    }
+
+    function populateDropdown() {
+      const files = ['chekhov.json', 'jackson.json', 'ernest.json', 'michael.json', 'ursula.json'];
+      const selector = d3.select("#fileSelector");
+
+      selector.selectAll("option")
+        .data(files)
+        .enter().append("option")
+        .text(d => d)
+        .attr("value", d => d);
+
+      loadTreeData(files[0]);
+
+      selector.on("change", function() {
+        const selectedFile = d3.select(this).property("value");
+        loadTreeData(selectedFile);
+      });
+    }
+
+    populateDropdown();
+  </script>
+</body>
+</html>

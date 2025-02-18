@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.svg-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body { margin: 0; }
+    svg { font: 10px sans-serif; }
+    .link {
+      fill: none;
+      stroke-opacity: 0.8;
+    }
+    .node circle {
+      fill: #999;
+      stroke: steelblue;
+      stroke-width: 1px;
+    }
+    .node text {
+      fill: #333;
+    }
